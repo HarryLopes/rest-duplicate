@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyCQtEh2_r8jpUnZN83S3CRuFRXzdJhHBpA</string>
+	<string>AIzaSyAsa9-ZSVgV8gSUq3I9cPPPi5hQ7KdGp1w</string>
 	<key>GCM_SENDER_ID</key>
-	<string>229866498296</string>
+	<string>870331328943</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.mycompany.pickngorestaurantapp</string>
 	<key>PROJECT_ID</key>
-	<string>pickngo-58375</string>
+	<string>boreal-conquest-425406-e0</string>
 	<key>STORAGE_BUCKET</key>
-	<string>pickngo-58375.appspot.com</string>
+	<string>boreal-conquest-425406-e0.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:229866498296:ios:3982536ce85218b93c330d</string>
+	<string>1:870331328943:ios:10074328b1e7fb188ae75a</string>
 </dict>
 </plist>

@@ -18,10 +18,10 @@
   },
   "scripts": {
     "lint": "./node_modules/.bin/eslint --max-warnings=0 .",
-    "serve": "firebase -P pickngo-58375 emulators:start --only functions",
-    "shell": "firebase -P pickngo-58375 functions:shell",
+    "serve": "firebase -P boreal-conquest-425406-e0 emulators:start --only functions",
+    "shell": "firebase -P boreal-conquest-425406-e0 functions:shell",
     "start": "npm run shell",
-    "logs": "firebase -P pickngo-58375 functions:log",
+    "logs": "firebase -P boreal-conquest-425406-e0 functions:log",
     "compile": "cp ../../tsconfig.template.json ./tsconfig-compile.json && tsc --project tsconfig-compile.json"
   },
   "engines": {

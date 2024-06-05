@@ -48,7 +48,6 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
       final initialPageName = message.data['initialPageName'] as String;
       final initialParameterData = getInitialParameterData(message.data);
       final parametersBuilder = parametersBuilderMap[initialPageName];
-      
       if (parametersBuilder != null) {
         final parameterData = await parametersBuilder(initialParameterData);
         context.pushNamed(

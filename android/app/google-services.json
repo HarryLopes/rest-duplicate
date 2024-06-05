@@ -1,32 +1,13 @@
 {
   "project_info": {
-    "project_number": "229866498296",
-    "project_id": "pickngo-58375",
-    "storage_bucket": "pickngo-58375.appspot.com"
+    "project_number": "870331328943",
+    "project_id": "boreal-conquest-425406-e0",
+    "storage_bucket": "boreal-conquest-425406-e0.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:229866498296:android:d4976706b3e7d0353c330d",
-        "android_client_info": {
-          "package_name": "com.mycompany.pickngo"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyB3oJA9Du3P4TmsUEIseGoiLnQ8Ezr2mzg"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:229866498296:android:ba3c22dbe3b00c873c330d",
+        "mobilesdk_app_id": "1:870331328943:android:6b809fa6578418208ae75a",
         "android_client_info": {
           "package_name": "com.mycompany.pickngorestaurantapp"
         }
@@ -34,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyB3oJA9Du3P4TmsUEIseGoiLnQ8Ezr2mzg"
+          "current_key": "AIzaSyD974qwBHv2-s5C9eQXoaTuRwGGjTejjko"
         }
       ],
       "services": {
