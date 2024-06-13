@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/push_notifications/push_notifications_util.dart';
 import '/flutter_flow/flutter_flow_button_tabbar.dart';
 import '/flutter_flow/flutter_flow_calendar.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -277,25 +278,80 @@ class _HomePageFinalWidgetState extends State<HomePageFinalWidget>
                                       Padding(
                                         padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 20.0, 0.0, 0.0),
-                                        child: Builder(
-                                          builder: (context) {
-                                            final newOrderedItems =
-                                                tabBarOrdersRecordList
-                                                    .map((e) => e)
-                                                    .toList()
-                                                    .where((e) =>
-                                                        e.orderStatus == 'New')
-                                                    .toList();
+                                        child:
+                                            StreamBuilder<List<OrdersRecord>>(
+                                          stream: queryOrdersRecord(
+                                            queryBuilder: (ordersRecord) =>
+                                                ordersRecord.where(
+                                              'orderStatus',
+                                              isEqualTo: 'New',
+                                            ),
+                                          )..listen((snapshot) async {
+                                              List<OrdersRecord>
+                                                  listViewOrdersRecordList =
+                                                  snapshot;
+                                              if (_model.listViewPreviousSnapshot !=
+                                                      null &&
+                                                  !const ListEquality(
+                                                          OrdersRecordDocumentEquality())
+                                                      .equals(
+                                                          listViewOrdersRecordList,
+                                                          _model
+                                                              .listViewPreviousSnapshot)) {
+                                                triggerPushNotification(
+                                                  notificationTitle:
+                                                      'NEW ORDER',
+                                                  notificationText:
+                                                      'You have received a new order.',
+                                                  notificationSound: 'default',
+                                                  userRefs: [
+                                                    currentUserReference!
+                                                  ],
+                                                  initialPageName:
+                                                      'HomePageFinal',
+                                                  parameterData: {},
+                                                );
+
+                                                setState(() {});
+                                              }
+                                              _model.listViewPreviousSnapshot =
+                                                  snapshot;
+                                            }),
+                                          builder: (context, snapshot) {
+                                            // Customize what your widget looks like when it's loading.
+                                            if (!snapshot.hasData) {
+                                              return Center(
+                                                child: SizedBox(
+                                                  width: 50.0,
+                                                  height: 50.0,
+                                                  child:
+                                                      CircularProgressIndicator(
+                                                    valueColor:
+                                                        AlwaysStoppedAnimation<
+                                                            Color>(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primary,
+                                                    ),
+                                                  ),
+                                                ),
+                                              );
+                                            }
+                                            List<OrdersRecord>
+                                                listViewOrdersRecordList =
+                                                snapshot.data!;
                                             return ListView.builder(
                                               padding: EdgeInsets.zero,
                                               primary: false,
                                               scrollDirection: Axis.vertical,
-                                              itemCount: newOrderedItems.length,
-                                              itemBuilder: (context,
-                                                  newOrderedItemsIndex) {
-                                                final newOrderedItemsItem =
-                                                    newOrderedItems[
-                                                        newOrderedItemsIndex];
+                                              itemCount:
+                                                  listViewOrdersRecordList
+                                                      .length,
+                                              itemBuilder:
+                                                  (context, listViewIndex) {
+                                                final listViewOrdersRecord =
+                                                    listViewOrdersRecordList[
+                                                        listViewIndex];
                                                 return Padding(
                                                   padding: const EdgeInsetsDirectional
                                                       .fromSTEB(15.0, 0.0, 15.0,
@@ -383,7 +439,7 @@ class _HomePageFinalWidgetState extends State<HomePageFinalWidget>
                                                                   child: Text(
                                                                     dateTimeFormat(
                                                                         'MMMMEEEEd',
-                                                                        newOrderedItemsItem
+                                                                        listViewOrdersRecord
                                                                             .orderTime!),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
@@ -423,7 +479,7 @@ class _HomePageFinalWidgetState extends State<HomePageFinalWidget>
                                                               UsersRecord>(
                                                             stream: UsersRecord
                                                                 .getDocument(
-                                                                    newOrderedItemsItem
+                                                                    listViewOrdersRecord
                                                                         .userRef!),
                                                             builder: (context,
                                                                 snapshot) {
@@ -504,7 +560,7 @@ class _HomePageFinalWidgetState extends State<HomePageFinalWidget>
                                                                   builder:
                                                                       (context) {
                                                                     final cartitem =
-                                                                        newOrderedItemsItem
+                                                                        listViewOrdersRecord
                                                                             .item
                                                                             .toList();
                                                                     return Column(
@@ -595,7 +651,7 @@ class _HomePageFinalWidgetState extends State<HomePageFinalWidget>
                                                                           0.0),
                                                               child: Text(
                                                                 'Total Bill : ${formatNumber(
-                                                                  newOrderedItemsItem
+                                                                  listViewOrdersRecord
                                                                       .cartSum,
                                                                   formatType:
                                                                       FormatType
@@ -623,7 +679,7 @@ class _HomePageFinalWidgetState extends State<HomePageFinalWidget>
                                                               ),
                                                             ),
                                                           ),
-                                                          if (newOrderedItemsItem
+                                                          if (listViewOrdersRecord
                                                                   .orderStatus ==
                                                               'New')
                                                             Padding(
@@ -685,9 +741,9 @@ class _HomePageFinalWidgetState extends State<HomePageFinalWidget>
                                                                             Colors.transparent,
                                                                         onTap:
                                                                             () async {
-                                                                          if (newOrderedItemsItem.orderMakingTime !=
+                                                                          if (listViewOrdersRecord.orderMakingTime !=
                                                                               5) {
-                                                                            await newOrderedItemsItem.reference.update({
+                                                                            await listViewOrdersRecord.reference.update({
                                                                               ...mapToFirestore(
                                                                                 {
                                                                                   'orderMakingTime': FieldValue.increment(-(2)),
@@ -714,7 +770,7 @@ class _HomePageFinalWidgetState extends State<HomePageFinalWidget>
                                                                             0.0),
                                                                         child:
                                                                             Text(
-                                                                          newOrderedItemsItem
+                                                                          listViewOrdersRecord
                                                                               .orderMakingTime
                                                                               .toString(),
                                                                           style: FlutterFlowTheme.of(context)
@@ -736,7 +792,7 @@ class _HomePageFinalWidgetState extends State<HomePageFinalWidget>
                                                                             Colors.transparent,
                                                                         onTap:
                                                                             () async {
-                                                                          await newOrderedItemsItem
+                                                                          await listViewOrdersRecord
                                                                               .reference
                                                                               .update({
                                                                             ...mapToFirestore(
@@ -777,7 +833,7 @@ class _HomePageFinalWidgetState extends State<HomePageFinalWidget>
                                                                   MainAxisAlignment
                                                                       .spaceBetween,
                                                               children: [
-                                                                if (newOrderedItemsItem
+                                                                if (listViewOrdersRecord
                                                                         .orderStatus ==
                                                                     'New')
                                                                   Expanded(
@@ -798,10 +854,10 @@ class _HomePageFinalWidgetState extends State<HomePageFinalWidget>
                                                                             FFButtonWidget(
                                                                           onPressed:
                                                                               () async {
-                                                                            await newOrderedItemsItem.reference.update(createOrdersRecordData(
+                                                                            await listViewOrdersRecord.reference.update(createOrdersRecordData(
                                                                               orderStatus: 'Accepted',
                                                                               trackOrder: 0.5,
-                                                                              orderMakingTime: newOrderedItemsItem.orderMakingTime,
+                                                                              orderMakingTime: listViewOrdersRecord.orderMakingTime,
                                                                             ));
                                                                           },
                                                                           text:
@@ -857,7 +913,7 @@ class _HomePageFinalWidgetState extends State<HomePageFinalWidget>
                                                                           FFButtonWidget(
                                                                         onPressed:
                                                                             () async {
-                                                                          await newOrderedItemsItem
+                                                                          await listViewOrdersRecord
                                                                               .reference
                                                                               .update(createOrdersRecordData(
                                                                             orderStatus:
