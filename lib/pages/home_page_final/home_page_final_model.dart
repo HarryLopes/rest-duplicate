@@ -1,4 +1,3 @@
-import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_calendar.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'home_page_final_widget.dart' show HomePageFinalWidget;
@@ -15,7 +14,6 @@ class HomePageFinalModel extends FlutterFlowModel<HomePageFinalWidget> {
   int get tabBarCurrentIndex =>
       tabBarController != null ? tabBarController!.index : 0;
 
-  List<OrdersRecord>? listViewPreviousSnapshot;
   // State field(s) for Calendar widget.
   DateTimeRange? calendarSelectedDay;
 

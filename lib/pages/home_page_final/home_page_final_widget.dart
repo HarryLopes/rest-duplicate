@@ -1,6 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/backend/push_notifications/push_notifications_util.dart';
 import '/flutter_flow/flutter_flow_button_tabbar.dart';
 import '/flutter_flow/flutter_flow_calendar.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -282,41 +281,18 @@ class _HomePageFinalWidgetState extends State<HomePageFinalWidget>
                                             StreamBuilder<List<OrdersRecord>>(
                                           stream: queryOrdersRecord(
                                             queryBuilder: (ordersRecord) =>
-                                                ordersRecord.where(
-                                              'orderStatus',
-                                              isEqualTo: 'New',
-                                            ),
-                                          )..listen((snapshot) async {
-                                              List<OrdersRecord>
-                                                  listViewOrdersRecordList =
-                                                  snapshot;
-                                              if (_model.listViewPreviousSnapshot !=
-                                                      null &&
-                                                  !const ListEquality(
-                                                          OrdersRecordDocumentEquality())
-                                                      .equals(
-                                                          listViewOrdersRecordList,
-                                                          _model
-                                                              .listViewPreviousSnapshot)) {
-                                                triggerPushNotification(
-                                                  notificationTitle:
-                                                      'NEW ORDER',
-                                                  notificationText:
-                                                      'You have received a new order.',
-                                                  notificationSound: 'default',
-                                                  userRefs: [
-                                                    currentUserReference!
-                                                  ],
-                                                  initialPageName:
-                                                      'HomePageFinal',
-                                                  parameterData: {},
-                                                );
-
-                                                setState(() {});
-                                              }
-                                              _model.listViewPreviousSnapshot =
-                                                  snapshot;
-                                            }),
+                                                ordersRecord
+                                                    .where(
+                                                      'orderStatus',
+                                                      isEqualTo: 'New',
+                                                    )
+                                                    .where(
+                                                      'restaurantRef',
+                                                      isEqualTo:
+                                                          homePageFinalRestaurantsRecord
+                                                              .reference,
+                                                    ),
+                                          ),
                                           builder: (context, snapshot) {
                                             // Customize what your widget looks like when it's loading.
                                             if (!snapshot.hasData) {
