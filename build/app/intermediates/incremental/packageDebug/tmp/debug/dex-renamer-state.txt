@@ -1,4 +1,4 @@
-#Thu Jun 06 23:11:35 IST 2024
+#Mon Jun 17 23:20:45 IST 2024
 base.0=E\:\\Flutter\\foodapp\\build\\app\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 base.1=E\:\\Flutter\\foodapp\\build\\app\\intermediates\\dex\\debug\\mergeLibDexDebug\\0\\classes.dex
 base.2=E\:\\Flutter\\foodapp\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
