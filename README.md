@@ -1,4 +1,4 @@
-# Restaurant Duplicate
+# PICK-N-GO Partners
 
 A new Flutter project.
 

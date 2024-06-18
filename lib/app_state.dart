@@ -39,26 +39,26 @@ class FFAppState extends ChangeNotifier {
   }
 
   void addToSize(SizeStruct value) {
-    _size.add(value);
+    size.add(value);
   }
 
   void removeFromSize(SizeStruct value) {
-    _size.remove(value);
+    size.remove(value);
   }
 
   void removeAtIndexFromSize(int index) {
-    _size.removeAt(index);
+    size.removeAt(index);
   }
 
   void updateSizeAtIndex(
     int index,
     SizeStruct Function(SizeStruct) updateFn,
   ) {
-    _size[index] = updateFn(_size[index]);
+    size[index] = updateFn(_size[index]);
   }
 
   void insertAtIndexInSize(int index, SizeStruct value) {
-    _size.insert(index, value);
+    size.insert(index, value);
   }
 
   DateTime? _date = DateTime.fromMillisecondsSinceEpoch(1710780480000);
