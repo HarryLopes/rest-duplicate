@@ -44,6 +44,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "awesome_notifications",
+      "rootUri": "file:///C:/Users/Harsh/AppData/Local/Pub/Cache/hosted/pub.dev/awesome_notifications-0.9.3+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
       "name": "boolean_selector",
       "rootUri": "file:///C:/Users/Harsh/AppData/Local/Pub/Cache/hosted/pub.dev/boolean_selector-2.1.1",
       "packageUri": "lib/",
@@ -162,6 +168,12 @@
       "rootUri": "file:///C:/Users/Harsh/AppData/Local/Pub/Cache/hosted/pub.dev/cupertino_icons-1.0.8",
       "packageUri": "lib/",
       "languageVersion": "3.1"
+    },
+    {
+      "name": "dbus",
+      "rootUri": "file:///C:/Users/Harsh/AppData/Local/Pub/Cache/hosted/pub.dev/dbus-0.7.10",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
     },
     {
       "name": "dropdown_button2",
@@ -338,16 +350,28 @@
       "languageVersion": "2.17"
     },
     {
-      "name": "flutter_launcher_icons",
-      "rootUri": "file:///C:/Users/Harsh/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_launcher_icons-0.13.1",
+      "name": "flutter_lints",
+      "rootUri": "file:///C:/Users/Harsh/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_lints-3.0.0",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
     {
-      "name": "flutter_lints",
-      "rootUri": "file:///C:/Users/Harsh/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_lints-3.0.0",
+      "name": "flutter_local_notifications",
+      "rootUri": "file:///C:/Users/Harsh/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_local_notifications-17.1.2",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "flutter_local_notifications_linux",
+      "rootUri": "file:///C:/Users/Harsh/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_local_notifications_linux-4.0.0+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "flutter_local_notifications_platform_interface",
+      "rootUri": "file:///C:/Users/Harsh/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_local_notifications_platform_interface-7.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
     },
     {
       "name": "flutter_localizations",
@@ -693,7 +717,7 @@
     },
     {
       "name": "platform",
-      "rootUri": "file:///C:/Users/Harsh/AppData/Local/Pub/Cache/hosted/pub.dev/platform-3.1.5",
+      "rootUri": "file:///C:/Users/Harsh/AppData/Local/Pub/Cache/hosted/pub.dev/platform-3.1.4",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
@@ -861,7 +885,7 @@
     },
     {
       "name": "table_calendar",
-      "rootUri": "file:///C:/Users/Harsh/AppData/Local/Pub/Cache/hosted/pub.dev/table_calendar-3.1.2",
+      "rootUri": "file:///C:/Users/Harsh/AppData/Local/Pub/Cache/hosted/pub.dev/table_calendar-3.1.1",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -882,6 +906,12 @@
       "rootUri": "file:///C:/Users/Harsh/AppData/Local/Pub/Cache/hosted/pub.dev/timeago-3.2.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "timezone",
+      "rootUri": "file:///C:/Users/Harsh/AppData/Local/Pub/Cache/hosted/pub.dev/timezone-0.9.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
     },
     {
       "name": "typed_data",
@@ -1028,7 +1058,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2024-06-18T04:37:52.107613Z",
+  "generated": "2024-06-18T04:32:42.603342Z",
   "generator": "pub",
   "generatorVersion": "3.4.1",
   "flutterRoot": "file:///C:/src/flutter",
