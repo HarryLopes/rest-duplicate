@@ -22,27 +22,21 @@ class CartitemStruct extends FFFirebaseStruct {
   int? _quantity;
   int get quantity => _quantity ?? 0;
   set quantity(int? val) => _quantity = val;
-
-  void incrementQuantity(int amount) => quantity = quantity + amount;
-
+  void incrementQuantity(int amount) => _quantity = quantity + amount;
   bool hasQuantity() => _quantity != null;
 
   // "menuSize" field.
   SizeStruct? _menuSize;
   SizeStruct get menuSize => _menuSize ?? SizeStruct();
   set menuSize(SizeStruct? val) => _menuSize = val;
-
-  void updateMenuSize(Function(SizeStruct) updateFn) {
-    updateFn(menuSize ??= SizeStruct());
-  }
-
+  void updateMenuSize(Function(SizeStruct) updateFn) =>
+      updateFn(_menuSize ??= SizeStruct());
   bool hasMenuSize() => _menuSize != null;
 
   // "MenuRef" field.
   DocumentReference? _menuRef;
   DocumentReference? get menuRef => _menuRef;
   set menuRef(DocumentReference? val) => _menuRef = val;
-
   bool hasMenuRef() => _menuRef != null;
 
   static CartitemStruct fromMap(Map<String, dynamic> data) => CartitemStruct(

@@ -5,8 +5,8 @@ import '../base_auth_user_provider.dart';
 
 export '../base_auth_user_provider.dart';
 
-class PICKNGOPartnersFirebaseUser extends BaseAuthUser {
-  PICKNGOPartnersFirebaseUser(this.user);
+class RestaurantDuplicateFirebaseUser extends BaseAuthUser {
+  RestaurantDuplicateFirebaseUser(this.user);
   User? user;
   @override
   bool get loggedIn => user != null;
@@ -55,10 +55,10 @@ class PICKNGOPartnersFirebaseUser extends BaseAuthUser {
   static BaseAuthUser fromUserCredential(UserCredential userCredential) =>
       fromFirebaseUser(userCredential.user);
   static BaseAuthUser fromFirebaseUser(User? user) =>
-      PICKNGOPartnersFirebaseUser(user);
+      RestaurantDuplicateFirebaseUser(user);
 }
 
-Stream<BaseAuthUser> pICKNGOPartnersFirebaseUserStream() =>
+Stream<BaseAuthUser> restaurantDuplicateFirebaseUserStream() =>
     FirebaseAuth.instance
         .authStateChanges()
         .debounce((user) => user == null && !loggedIn
@@ -66,7 +66,7 @@ Stream<BaseAuthUser> pICKNGOPartnersFirebaseUserStream() =>
             : Stream.value(user))
         .map<BaseAuthUser>(
       (user) {
-        currentUser = PICKNGOPartnersFirebaseUser(user);
+        currentUser = RestaurantDuplicateFirebaseUser(user);
         return currentUser!;
       },
     );
