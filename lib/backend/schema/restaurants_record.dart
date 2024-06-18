@@ -85,6 +85,11 @@ class RestaurantsRecord extends FirestoreRecord {
   double get rating => _rating ?? 0.0;
   bool hasRating() => _rating != null;
 
+  // "ownerRef" field.
+  DocumentReference? _ownerRef;
+  DocumentReference? get ownerRef => _ownerRef;
+  bool hasOwnerRef() => _ownerRef != null;
+
   void _initializeFields() {
     _name = snapshotData['name'] as String?;
     _category = snapshotData['category'] as String?;
@@ -100,6 +105,7 @@ class RestaurantsRecord extends FirestoreRecord {
     _menuRef = snapshotData['MenuRef'] as DocumentReference?;
     _menuCategoryRef = snapshotData['MenuCategoryRef'] as DocumentReference?;
     _rating = castToType<double>(snapshotData['rating']);
+    _ownerRef = snapshotData['ownerRef'] as DocumentReference?;
   }
 
   static CollectionReference get collection =>
@@ -150,6 +156,7 @@ Map<String, dynamic> createRestaurantsRecordData({
   DocumentReference? menuRef,
   DocumentReference? menuCategoryRef,
   double? rating,
+  DocumentReference? ownerRef,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -166,6 +173,7 @@ Map<String, dynamic> createRestaurantsRecordData({
       'MenuRef': menuRef,
       'MenuCategoryRef': menuCategoryRef,
       'rating': rating,
+      'ownerRef': ownerRef,
     }.withoutNulls,
   );
 
@@ -191,7 +199,8 @@ class RestaurantsRecordDocumentEquality implements Equality<RestaurantsRecord> {
         e1?.isRestaurantOn == e2?.isRestaurantOn &&
         e1?.menuRef == e2?.menuRef &&
         e1?.menuCategoryRef == e2?.menuCategoryRef &&
-        e1?.rating == e2?.rating;
+        e1?.rating == e2?.rating &&
+        e1?.ownerRef == e2?.ownerRef;
   }
 
   @override
@@ -209,7 +218,8 @@ class RestaurantsRecordDocumentEquality implements Equality<RestaurantsRecord> {
         e?.isRestaurantOn,
         e?.menuRef,
         e?.menuCategoryRef,
-        e?.rating
+        e?.rating,
+        e?.ownerRef
       ]);
 
   @override
