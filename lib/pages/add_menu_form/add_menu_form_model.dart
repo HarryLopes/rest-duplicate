@@ -33,7 +33,6 @@ class AddMenuFormModel extends FlutterFlowModel<AddMenuFormWidget> {
 
   // State field(s) for dishCategory widget.
   FormFieldController<List<String>>? dishCategoryValueController;
-
   List<String>? get dishCategoryValues => dishCategoryValueController?.value;
   set dishCategoryValues(List<String>? v) =>
       dishCategoryValueController?.value = v;
