@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.mycompany.pickngorestaurantapp-mergeDebugResources-51:/values-night-v31/values-night-v31.xml",
+            "outputFile": "com.mycompany.pickngorestaurantapp-mergeDebugResources-34:/values-night-v31/values-night-v31.xml",
             "map": [
                 {
-                    "source": "E:\\Flutter\\foodapp\\android\\app\\src\\main\\res\\values-night-v31\\styles.xml",
+                    "source": "D:\\flutterprojects\\Harsh flutter\\foodapp\\android\\app\\src\\main\\res\\values-night-v31\\styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
