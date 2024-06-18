@@ -711,6 +711,7 @@ class _OnboardingpageWidgetState extends State<OnboardingpageWidget> {
                             closingTime: _model.datePicked2,
                             uid: currentUserReference?.id,
                             restaurantImage: _model.uploadedFileUrl,
+                            ownerRef: currentUserReference,
                           ),
                           ...mapToFirestore(
                             {
@@ -732,6 +733,7 @@ class _OnboardingpageWidgetState extends State<OnboardingpageWidget> {
                             closingTime: _model.datePicked2,
                             uid: currentUserReference?.id,
                             restaurantImage: _model.uploadedFileUrl,
+                            ownerRef: currentUserReference,
                           ),
                           ...mapToFirestore(
                             {
