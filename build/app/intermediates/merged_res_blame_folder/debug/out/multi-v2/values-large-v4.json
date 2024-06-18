@@ -1,10 +1,27 @@
 {
     "logs": [
         {
-            "outputFile": "com.mycompany.pickngorestaurantapp-mergeDebugResources-34:/values-large-v4/values-large-v4.xml",
+            "outputFile": "com.mycompany.pickngorestaurantapp-mergeDebugResources-51:/values-large-v4/values-large-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Harsh\\.gradle\\caches\\transforms-3\\10f496cee22c4c875dc3990de4c26813\\transformed\\appcompat-1.2.0\\res\\values-large-v4\\values-large-v4.xml",
+                    "source": "C:\\Users\\admin\\.gradle\\caches\\transforms-3\\4dec04722452b70ba7b5a662a014241d\\transformed\\material-1.11.0\\res\\values-large-v4\\values-large-v4.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,169,285,407",
+                        "endColumns": "113,115,121,133",
+                        "endOffsets": "164,280,402,536"
+                    },
+                    "to": {
+                        "startLines": "11,12,13,14",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "752,866,982,1104",
+                        "endColumns": "113,115,121,133",
+                        "endOffsets": "861,977,1099,1233"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\admin\\.gradle\\caches\\transforms-3\\d38bfbac229da6dadb4643f95ed6fb59\\transformed\\appcompat-1.6.1\\res\\values-large-v4\\values-large-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10",
                         "startColumns": "4,4,4,4,4,4,4,4,4",
