@@ -19,4 +19,4 @@ export '/login_pages/edit_profile_page/edit_profile_page_widget.dart'
 export '/pages/menu_item/menu_item_widget.dart' show MenuItemWidget;
 export '/pages/add_menu_category/add_menu_category_widget.dart'
     show AddMenuCategoryWidget;
-export '/dish_details/dish_details_widget.dart' show DishDetailsWidget;
+export '/pages/dish_details/dish_details_widget.dart' show DishDetailsWidget;

@@ -745,7 +745,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                         child: FlutterFlowDropDown<String>(
                           multiSelectController:
                               _model.restaurantworkingdaysValueController ??=
-                                  FormFieldController<List<String>>(
+                                  FormListFieldController<String>(
                                       _model.restaurantworkingdaysValue ??=
                                           List<String>.from(
                             editProfilePageRestaurantsRecord.workingDays ?? [],

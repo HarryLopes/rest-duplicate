@@ -60,6 +60,11 @@ class MenuRecord extends FirestoreRecord {
   bool get inStock => _inStock ?? false;
   bool hasInStock() => _inStock != null;
 
+  // "menuImage" field.
+  String? _menuImage;
+  String get menuImage => _menuImage ?? '';
+  bool hasMenuImage() => _menuImage != null;
+
   void _initializeFields() {
     _name = snapshotData['Name'] as String?;
     _price = castToType<int>(snapshotData['Price']);
@@ -73,6 +78,7 @@ class MenuRecord extends FirestoreRecord {
     _isVeg = snapshotData['isVeg'] as bool?;
     _isNonveg = snapshotData['isNonveg'] as bool?;
     _inStock = snapshotData['inStock'] as bool?;
+    _menuImage = snapshotData['menuImage'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -116,6 +122,7 @@ Map<String, dynamic> createMenuRecordData({
   bool? isVeg,
   bool? isNonveg,
   bool? inStock,
+  String? menuImage,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -126,6 +133,7 @@ Map<String, dynamic> createMenuRecordData({
       'isVeg': isVeg,
       'isNonveg': isNonveg,
       'inStock': inStock,
+      'menuImage': menuImage,
     }.withoutNulls,
   );
 
@@ -146,7 +154,8 @@ class MenuRecordDocumentEquality implements Equality<MenuRecord> {
         e1?.menuCategoryRef == e2?.menuCategoryRef &&
         e1?.isVeg == e2?.isVeg &&
         e1?.isNonveg == e2?.isNonveg &&
-        e1?.inStock == e2?.inStock;
+        e1?.inStock == e2?.inStock &&
+        e1?.menuImage == e2?.menuImage;
   }
 
   @override
@@ -159,7 +168,8 @@ class MenuRecordDocumentEquality implements Equality<MenuRecord> {
         e?.menuCategoryRef,
         e?.isVeg,
         e?.isNonveg,
-        e?.inStock
+        e?.inStock,
+        e?.menuImage
       ]);
 
   @override

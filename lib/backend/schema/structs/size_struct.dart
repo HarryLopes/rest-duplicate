@@ -3,9 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '/backend/schema/util/firestore_util.dart';
-import '/backend/schema/util/schema_util.dart';
 
-import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 class SizeStruct extends FFFirebaseStruct {
@@ -23,19 +21,23 @@ class SizeStruct extends FFFirebaseStruct {
   String? _sizeName;
   String get sizeName => _sizeName ?? '';
   set sizeName(String? val) => _sizeName = val;
+
   bool hasSizeName() => _sizeName != null;
 
   // "size_price" field.
   int? _sizePrice;
   int get sizePrice => _sizePrice ?? 0;
   set sizePrice(int? val) => _sizePrice = val;
-  void incrementSizePrice(int amount) => _sizePrice = sizePrice + amount;
+
+  void incrementSizePrice(int amount) => sizePrice = sizePrice + amount;
+
   bool hasSizePrice() => _sizePrice != null;
 
   // "Menu_Ref" field.
   DocumentReference? _menuRef;
   DocumentReference? get menuRef => _menuRef;
   set menuRef(DocumentReference? val) => _menuRef = val;
+
   bool hasMenuRef() => _menuRef != null;
 
   static SizeStruct fromMap(Map<String, dynamic> data) => SizeStruct(
