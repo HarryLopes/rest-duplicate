@@ -1,0 +1,16 @@
+io.flutter.plugins.firebase.storage.firebase_storage-jetified-play-services-base-18.0.1-0 C:\Users\Harsh\.gradle\caches\transforms-3\199f5fc7496edc38eaae539280ca00fe\transformed\jetified-play-services-base-18.0.1\res
+io.flutter.plugins.firebase.storage.firebase_storage-core-1.6.0-1 C:\Users\Harsh\.gradle\caches\transforms-3\31b50fa987a3d8fae27f392ef134196e\transformed\core-1.6.0\res
+io.flutter.plugins.firebase.storage.firebase_storage-jetified-window-java-1.0.0-beta04-2 C:\Users\Harsh\.gradle\caches\transforms-3\509bfdacded6cfe0db9764a63cb85356\transformed\jetified-window-java-1.0.0-beta04\res
+io.flutter.plugins.firebase.storage.firebase_storage-jetified-window-1.0.0-beta04-3 C:\Users\Harsh\.gradle\caches\transforms-3\61f6b99bb9934935b5f167de6800a38b\transformed\jetified-window-1.0.0-beta04\res
+io.flutter.plugins.firebase.storage.firebase_storage-jetified-firebase-common-20.4.2-4 C:\Users\Harsh\.gradle\caches\transforms-3\8c416d82bdcadf21bd315e939cfae963\transformed\jetified-firebase-common-20.4.2\res
+io.flutter.plugins.firebase.storage.firebase_storage-jetified-play-services-basement-18.1.0-5 C:\Users\Harsh\.gradle\caches\transforms-3\a78aa382b3c89accc2200a744d25680c\transformed\jetified-play-services-basement-18.1.0\res
+io.flutter.plugins.firebase.storage.firebase_storage-jetified-annotation-experimental-1.1.0-6 C:\Users\Harsh\.gradle\caches\transforms-3\a90847a9b25aecb60d4c0430aff06cea\transformed\jetified-annotation-experimental-1.1.0\res
+io.flutter.plugins.firebase.storage.firebase_storage-main-7 C:\Users\Harsh\AppData\Local\Pub\Cache\hosted\pub.dev\firebase_storage-11.6.8\android\src\main\res
+io.flutter.plugins.firebase.storage.firebase_storage-release-8 C:\Users\Harsh\AppData\Local\Pub\Cache\hosted\pub.dev\firebase_storage-11.6.8\android\src\release\res
+io.flutter.plugins.firebase.storage.firebase_storage-packaged_res-9 D:\flutterprojects\Harsh flutter\foodapp\build\firebase_core\intermediates\packaged_res\release
+io.flutter.plugins.firebase.storage.firebase_storage-pngs-10 D:\flutterprojects\Harsh flutter\foodapp\build\firebase_storage\generated\res\pngs\release
+io.flutter.plugins.firebase.storage.firebase_storage-resValues-11 D:\flutterprojects\Harsh flutter\foodapp\build\firebase_storage\generated\res\resValues\release
+io.flutter.plugins.firebase.storage.firebase_storage-rs-12 D:\flutterprojects\Harsh flutter\foodapp\build\firebase_storage\generated\res\rs\release
+io.flutter.plugins.firebase.storage.firebase_storage-mergeReleaseResources-13 D:\flutterprojects\Harsh flutter\foodapp\build\firebase_storage\intermediates\incremental\release\mergeReleaseResources\merged.dir
+io.flutter.plugins.firebase.storage.firebase_storage-mergeReleaseResources-14 D:\flutterprojects\Harsh flutter\foodapp\build\firebase_storage\intermediates\incremental\release\mergeReleaseResources\stripped.dir
+io.flutter.plugins.firebase.storage.firebase_storage-merged_res-15 D:\flutterprojects\Harsh flutter\foodapp\build\firebase_storage\intermediates\merged_res\release

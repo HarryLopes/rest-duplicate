@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/push_notifications/push_notifications_util.dart';
 import '/flutter_flow/flutter_flow_button_tabbar.dart';
 import '/flutter_flow/flutter_flow_calendar.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -249,15 +250,15 @@ class _HomePageFinalWidgetState extends State<HomePageFinalWidget>
                                     tabs: [
                                       Tab(
                                         text:
-                                            'New (${tabBarOrdersRecordList.where((e) => e.orderStatus == 'New').toList().length.toString()})',
+                                            'New ( ${tabBarOrdersRecordList.where((e) => e.orderStatus == 'New').toList().length.toString()}  )',
                                       ),
                                       Tab(
                                         text:
-                                            'Preparing (${tabBarOrdersRecordList.where((e) => e.orderStatus == 'Accepted').toList().length.toString()})',
+                                            'Preparing ( ${tabBarOrdersRecordList.where((e) => e.orderStatus == 'Accepted').toList().length.toString()}  )',
                                       ),
                                       Tab(
                                         text:
-                                            'Ready (${tabBarOrdersRecordList.where((e) => e.orderStatus == 'Ready').toList().length.toString()})',
+                                            'Ready ( ${tabBarOrdersRecordList.where((e) => e.orderStatus == 'Ready').toList().length.toString()}  )',
                                       ),
                                     ],
                                     controller: _model.tabBarController,
@@ -281,18 +282,41 @@ class _HomePageFinalWidgetState extends State<HomePageFinalWidget>
                                             StreamBuilder<List<OrdersRecord>>(
                                           stream: queryOrdersRecord(
                                             queryBuilder: (ordersRecord) =>
-                                                ordersRecord
-                                                    .where(
-                                                      'orderStatus',
-                                                      isEqualTo: 'New',
-                                                    )
-                                                    .where(
-                                                      'restaurantRef',
-                                                      isEqualTo:
-                                                          homePageFinalRestaurantsRecord
-                                                              .reference,
-                                                    ),
-                                          ),
+                                                ordersRecord.where(
+                                              'orderStatus',
+                                              isEqualTo: 'New',
+                                            ),
+                                          )..listen((snapshot) async {
+                                              List<OrdersRecord>
+                                                  listViewOrdersRecordList =
+                                                  snapshot;
+                                              if (_model.listViewPreviousSnapshot !=
+                                                      null &&
+                                                  !const ListEquality(
+                                                          OrdersRecordDocumentEquality())
+                                                      .equals(
+                                                          listViewOrdersRecordList,
+                                                          _model
+                                                              .listViewPreviousSnapshot)) {
+                                                triggerPushNotification(
+                                                  notificationTitle:
+                                                      'NEW ORDER',
+                                                  notificationText:
+                                                      'You have received a new order.',
+                                                  notificationSound: 'default',
+                                                  userRefs: [
+                                                    currentUserReference!
+                                                  ],
+                                                  initialPageName:
+                                                      'HomePageFinal',
+                                                  parameterData: {},
+                                                );
+
+                                                setState(() {});
+                                              }
+                                              _model.listViewPreviousSnapshot =
+                                                  snapshot;
+                                            }),
                                           builder: (context, snapshot) {
                                             // Customize what your widget looks like when it's loading.
                                             if (!snapshot.hasData) {
@@ -585,7 +609,7 @@ class _HomePageFinalWidgetState extends State<HomePageFinalWidget>
                                                                                 ),
                                                                                 Text(
                                                                                   formatNumber(
-                                                                                    cartitemItem.menuSize.sizePrice * cartitemItem.quantity,
+                                                                                    cartitemItem.menuSize.sizePrice,
                                                                                     formatType: FormatType.custom,
                                                                                     currency: '₹',
                                                                                     format: '',
@@ -948,54 +972,26 @@ class _HomePageFinalWidgetState extends State<HomePageFinalWidget>
                                           },
                                         ),
                                       ),
-                                      StreamBuilder<List<OrdersRecord>>(
-                                        stream: queryOrdersRecord(
-                                          queryBuilder: (ordersRecord) =>
-                                              ordersRecord
-                                                  .where(
-                                                    'orderStatus',
-                                                    isEqualTo: 'Accepted',
-                                                  )
-                                                  .where(
-                                                    'restaurantRef',
-                                                    isEqualTo:
-                                                        homePageFinalRestaurantsRecord
-                                                            .reference,
-                                                  ),
-                                        ),
-                                        builder: (context, snapshot) {
-                                          // Customize what your widget looks like when it's loading.
-                                          if (!snapshot.hasData) {
-                                            return Center(
-                                              child: SizedBox(
-                                                width: 50.0,
-                                                height: 50.0,
-                                                child:
-                                                    CircularProgressIndicator(
-                                                  valueColor:
-                                                      AlwaysStoppedAnimation<
-                                                          Color>(
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                  ),
-                                                ),
-                                              ),
-                                            );
-                                          }
-                                          List<OrdersRecord>
-                                              listViewOrdersRecordList =
-                                              snapshot.data!;
+                                      Builder(
+                                        builder: (context) {
+                                          final newOrderItems =
+                                              tabBarOrdersRecordList
+                                                  .map((e) => e)
+                                                  .toList()
+                                                  .where((e) =>
+                                                      e.orderStatus ==
+                                                      'Accepted')
+                                                  .toList();
                                           return ListView.builder(
                                             padding: EdgeInsets.zero,
                                             primary: false,
                                             scrollDirection: Axis.vertical,
-                                            itemCount:
-                                                listViewOrdersRecordList.length,
+                                            itemCount: newOrderItems.length,
                                             itemBuilder:
-                                                (context, listViewIndex) {
-                                              final listViewOrdersRecord =
-                                                  listViewOrdersRecordList[
-                                                      listViewIndex];
+                                                (context, newOrderItemsIndex) {
+                                              final newOrderItemsItem =
+                                                  newOrderItems[
+                                                      newOrderItemsIndex];
                                               return Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
@@ -1079,7 +1075,7 @@ class _HomePageFinalWidgetState extends State<HomePageFinalWidget>
                                                                 child: Text(
                                                                   dateTimeFormat(
                                                                       'MMMMEEEEd',
-                                                                      listViewOrdersRecord
+                                                                      newOrderItemsItem
                                                                           .orderTime!),
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
@@ -1120,7 +1116,7 @@ class _HomePageFinalWidgetState extends State<HomePageFinalWidget>
                                                             UsersRecord>(
                                                           stream: UsersRecord
                                                               .getDocument(
-                                                                  listViewOrdersRecord
+                                                                  newOrderItemsItem
                                                                       .userRef!),
                                                           builder: (context,
                                                               snapshot) {
@@ -1199,8 +1195,8 @@ class _HomePageFinalWidgetState extends State<HomePageFinalWidget>
                                                               child: Builder(
                                                                 builder:
                                                                     (context) {
-                                                                  final cart =
-                                                                      listViewOrdersRecord
+                                                                  final item =
+                                                                      newOrderItemsItem
                                                                           .item
                                                                           .toList();
                                                                   return Column(
@@ -1208,15 +1204,15 @@ class _HomePageFinalWidgetState extends State<HomePageFinalWidget>
                                                                         MainAxisSize
                                                                             .max,
                                                                     children: List.generate(
-                                                                        cart.length,
-                                                                        (cartIndex) {
-                                                                      final cartItem =
-                                                                          cart[
-                                                                              cartIndex];
+                                                                        item.length,
+                                                                        (itemIndex) {
+                                                                      final itemItem =
+                                                                          item[
+                                                                              itemIndex];
                                                                       return StreamBuilder<
                                                                           MenuRecord>(
                                                                         stream:
-                                                                            MenuRecord.getDocument(cartItem.menuRef!),
+                                                                            MenuRecord.getDocument(itemItem.menuRef!),
                                                                         builder:
                                                                             (context,
                                                                                 snapshot) {
@@ -1244,7 +1240,7 @@ class _HomePageFinalWidgetState extends State<HomePageFinalWidget>
                                                                                 MainAxisAlignment.spaceBetween,
                                                                             children: [
                                                                               Text(
-                                                                                '${cartItem.quantity.toString()}x ${rowMenuRecord.name} (${cartItem.menuSize.sizeName})',
+                                                                                '${itemItem.quantity.toString()}x ${rowMenuRecord.name} (${itemItem.menuSize.sizeName})',
                                                                                 style: FlutterFlowTheme.of(context).labelMedium.override(
                                                                                       fontFamily: 'Readex Pro',
                                                                                       fontSize: 17.0,
@@ -1253,7 +1249,7 @@ class _HomePageFinalWidgetState extends State<HomePageFinalWidget>
                                                                               ),
                                                                               Text(
                                                                                 formatNumber(
-                                                                                  cartItem.menuSize.sizePrice * cartItem.quantity,
+                                                                                  itemItem.menuSize.sizePrice,
                                                                                   formatType: FormatType.custom,
                                                                                   currency: '₹',
                                                                                   format: '',
@@ -1294,7 +1290,16 @@ class _HomePageFinalWidgetState extends State<HomePageFinalWidget>
                                                                         0.0,
                                                                         0.0),
                                                             child: Text(
-                                                              'Total Bill : ${listViewOrdersRecord.cartSum.toString()}',
+                                                              'Total Bill : ${formatNumber(
+                                                                newOrderItemsItem
+                                                                    .cartSum,
+                                                                formatType:
+                                                                    FormatType
+                                                                        .custom,
+                                                                currency: '₹',
+                                                                format: '',
+                                                                locale: '',
+                                                              )}',
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .bodyMedium
@@ -1333,7 +1338,7 @@ class _HomePageFinalWidgetState extends State<HomePageFinalWidget>
                                                                   FFButtonWidget(
                                                                 onPressed:
                                                                     () async {
-                                                                  await listViewOrdersRecord
+                                                                  await newOrderItemsItem
                                                                       .reference
                                                                       .update({
                                                                     ...createOrdersRecordData(
@@ -1404,54 +1409,25 @@ class _HomePageFinalWidgetState extends State<HomePageFinalWidget>
                                           );
                                         },
                                       ),
-                                      StreamBuilder<List<OrdersRecord>>(
-                                        stream: queryOrdersRecord(
-                                          queryBuilder: (ordersRecord) =>
-                                              ordersRecord
-                                                  .where(
-                                                    'orderStatus',
-                                                    isEqualTo: 'Ready',
-                                                  )
-                                                  .where(
-                                                    'restaurantRef',
-                                                    isEqualTo:
-                                                        homePageFinalRestaurantsRecord
-                                                            .reference,
-                                                  ),
-                                        ),
-                                        builder: (context, snapshot) {
-                                          // Customize what your widget looks like when it's loading.
-                                          if (!snapshot.hasData) {
-                                            return Center(
-                                              child: SizedBox(
-                                                width: 50.0,
-                                                height: 50.0,
-                                                child:
-                                                    CircularProgressIndicator(
-                                                  valueColor:
-                                                      AlwaysStoppedAnimation<
-                                                          Color>(
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                  ),
-                                                ),
-                                              ),
-                                            );
-                                          }
-                                          List<OrdersRecord>
-                                              listViewOrdersRecordList =
-                                              snapshot.data!;
+                                      Builder(
+                                        builder: (context) {
+                                          final newOrderedItem =
+                                              tabBarOrdersRecordList
+                                                  .map((e) => e)
+                                                  .toList()
+                                                  .where((e) =>
+                                                      e.orderStatus == 'Ready')
+                                                  .toList();
                                           return ListView.builder(
                                             padding: EdgeInsets.zero,
                                             primary: false,
                                             scrollDirection: Axis.vertical,
-                                            itemCount:
-                                                listViewOrdersRecordList.length,
+                                            itemCount: newOrderedItem.length,
                                             itemBuilder:
-                                                (context, listViewIndex) {
-                                              final listViewOrdersRecord =
-                                                  listViewOrdersRecordList[
-                                                      listViewIndex];
+                                                (context, newOrderedItemIndex) {
+                                              final newOrderedItemItem =
+                                                  newOrderedItem[
+                                                      newOrderedItemIndex];
                                               return Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
@@ -1539,7 +1515,7 @@ class _HomePageFinalWidgetState extends State<HomePageFinalWidget>
                                                                   child: Text(
                                                                     dateTimeFormat(
                                                                         'MMMMEEEEd',
-                                                                        listViewOrdersRecord
+                                                                        newOrderedItemItem
                                                                             .orderTime!),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
@@ -1579,7 +1555,7 @@ class _HomePageFinalWidgetState extends State<HomePageFinalWidget>
                                                               UsersRecord>(
                                                             stream: UsersRecord
                                                                 .getDocument(
-                                                                    listViewOrdersRecord
+                                                                    newOrderedItemItem
                                                                         .userRef!),
                                                             builder: (context,
                                                                 snapshot) {
@@ -1660,7 +1636,7 @@ class _HomePageFinalWidgetState extends State<HomePageFinalWidget>
                                                                   builder:
                                                                       (context) {
                                                                     final item =
-                                                                        listViewOrdersRecord
+                                                                        newOrderedItemItem
                                                                             .item
                                                                             .toList();
                                                                     return Column(
@@ -1708,7 +1684,7 @@ class _HomePageFinalWidgetState extends State<HomePageFinalWidget>
                                                                                 ),
                                                                                 Text(
                                                                                   formatNumber(
-                                                                                    itemItem.menuSize.sizePrice * itemItem.quantity,
+                                                                                    itemItem.menuSize.sizePrice,
                                                                                     formatType: FormatType.custom,
                                                                                     currency: '₹',
                                                                                     format: '',
@@ -1749,7 +1725,16 @@ class _HomePageFinalWidgetState extends State<HomePageFinalWidget>
                                                                           0.0,
                                                                           0.0),
                                                               child: Text(
-                                                                'Total Bill : ${listViewOrdersRecord.cartSum.toString()}',
+                                                                'Total Bill : ${formatNumber(
+                                                                  newOrderedItemItem
+                                                                      .cartSum,
+                                                                  formatType:
+                                                                      FormatType
+                                                                          .custom,
+                                                                  currency: '₹',
+                                                                  format: '',
+                                                                  locale: '',
+                                                                )}',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
@@ -1793,7 +1778,7 @@ class _HomePageFinalWidgetState extends State<HomePageFinalWidget>
                                                                       FFButtonWidget(
                                                                     onPressed:
                                                                         () async {
-                                                                      await listViewOrdersRecord
+                                                                      await newOrderedItemItem
                                                                           .reference
                                                                           .update(
                                                                               createOrdersRecordData(

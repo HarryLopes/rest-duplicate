@@ -1,0 +1,12 @@
+com.tekartik.sqflite-core-1.6.0-0 C:\Users\Harsh\.gradle\caches\transforms-3\31b50fa987a3d8fae27f392ef134196e\transformed\core-1.6.0\res
+com.tekartik.sqflite-jetified-window-java-1.0.0-beta04-1 C:\Users\Harsh\.gradle\caches\transforms-3\509bfdacded6cfe0db9764a63cb85356\transformed\jetified-window-java-1.0.0-beta04\res
+com.tekartik.sqflite-jetified-window-1.0.0-beta04-2 C:\Users\Harsh\.gradle\caches\transforms-3\61f6b99bb9934935b5f167de6800a38b\transformed\jetified-window-1.0.0-beta04\res
+com.tekartik.sqflite-jetified-annotation-experimental-1.1.0-3 C:\Users\Harsh\.gradle\caches\transforms-3\a90847a9b25aecb60d4c0430aff06cea\transformed\jetified-annotation-experimental-1.1.0\res
+com.tekartik.sqflite-main-4 C:\Users\Harsh\AppData\Local\Pub\Cache\hosted\pub.dev\sqflite-2.2.6\android\src\main\res
+com.tekartik.sqflite-release-5 C:\Users\Harsh\AppData\Local\Pub\Cache\hosted\pub.dev\sqflite-2.2.6\android\src\release\res
+com.tekartik.sqflite-pngs-6 D:\flutterprojects\Harsh flutter\foodapp\build\sqflite\generated\res\pngs\release
+com.tekartik.sqflite-resValues-7 D:\flutterprojects\Harsh flutter\foodapp\build\sqflite\generated\res\resValues\release
+com.tekartik.sqflite-rs-8 D:\flutterprojects\Harsh flutter\foodapp\build\sqflite\generated\res\rs\release
+com.tekartik.sqflite-mergeReleaseResources-9 D:\flutterprojects\Harsh flutter\foodapp\build\sqflite\intermediates\incremental\release\mergeReleaseResources\merged.dir
+com.tekartik.sqflite-mergeReleaseResources-10 D:\flutterprojects\Harsh flutter\foodapp\build\sqflite\intermediates\incremental\release\mergeReleaseResources\stripped.dir
+com.tekartik.sqflite-merged_res-11 D:\flutterprojects\Harsh flutter\foodapp\build\sqflite\intermediates\merged_res\release
