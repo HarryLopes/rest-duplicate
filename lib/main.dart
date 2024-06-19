@@ -1,3 +1,6 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:p_i_c_k_n_g_o_partners/backend/push_notifications/notification_service.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +15,28 @@ import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'index.dart';
 
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  final data = message.data; // Notification data
+  await Notification_Service().showNotification(message);
+  print("notification data is :::$data");
+  print('A notif shown when the app is closed! ${message.notification}');
+  print('A bg message just showed up : ${message.messageId}');
+}
+
+NotificationChannel pickngochannel = NotificationChannel(
+  groupKey: 'pickngo_groupp',
+  channelShowBadge: true,
+  channelKey: 'Pickngo_Notification',
+  channelName: 'Pickngo Notifications',
+  channelDescription: 'Pickngo_Notification Alert Notifications',
+  playSound: true,
+  onlyAlertOnce: false,
+  soundSource: 'resource://raw/customsound',
+  importance: NotificationImportance.Default,
+  defaultColor: Colors.deepPurple,
+  ledColor: Colors.deepPurple,
+);
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   GoRouter.optionURLReflectsImperativeAPIs = true;
@@ -19,7 +44,11 @@ void main() async {
   await initFirebase();
 
   await FlutterFlowTheme.initialize();
+  AwesomeNotifications().initialize(
+      'resource://drawable/ic_launcher', [pickngochannel],
+      debug: true);
 
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   final appState = FFAppState(); // Initialize FFAppState
   await appState.initializePersistedState();
 
@@ -55,6 +84,13 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
 
+    AwesomeNotifications().isNotificationAllowed().then((isallowed) {
+      if (!isallowed) {
+        AwesomeNotifications().requestPermissionToSendNotifications();
+      }
+    });
+
+    Notification_Service().showFirebaseNotification(context);
     _appStateNotifier = AppStateNotifier.instance;
     _router = createRouter(_appStateNotifier);
     userStream = pICKNGOPartnersFirebaseUserStream()

@@ -1,0 +1,12 @@
+io.flutter.plugins.pathprovider.path_provider_android-core-1.6.0-0 C:\Users\Harsh\.gradle\caches\transforms-3\31b50fa987a3d8fae27f392ef134196e\transformed\core-1.6.0\res
+io.flutter.plugins.pathprovider.path_provider_android-jetified-window-java-1.0.0-beta04-1 C:\Users\Harsh\.gradle\caches\transforms-3\509bfdacded6cfe0db9764a63cb85356\transformed\jetified-window-java-1.0.0-beta04\res
+io.flutter.plugins.pathprovider.path_provider_android-jetified-window-1.0.0-beta04-2 C:\Users\Harsh\.gradle\caches\transforms-3\61f6b99bb9934935b5f167de6800a38b\transformed\jetified-window-1.0.0-beta04\res
+io.flutter.plugins.pathprovider.path_provider_android-jetified-annotation-experimental-1.1.0-3 C:\Users\Harsh\.gradle\caches\transforms-3\a90847a9b25aecb60d4c0430aff06cea\transformed\jetified-annotation-experimental-1.1.0\res
+io.flutter.plugins.pathprovider.path_provider_android-main-4 C:\Users\Harsh\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_android-2.0.25\android\src\main\res
+io.flutter.plugins.pathprovider.path_provider_android-release-5 C:\Users\Harsh\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_android-2.0.25\android\src\release\res
+io.flutter.plugins.pathprovider.path_provider_android-pngs-6 D:\flutterprojects\Harsh flutter\foodapp\build\path_provider_android\generated\res\pngs\release
+io.flutter.plugins.pathprovider.path_provider_android-resValues-7 D:\flutterprojects\Harsh flutter\foodapp\build\path_provider_android\generated\res\resValues\release
+io.flutter.plugins.pathprovider.path_provider_android-rs-8 D:\flutterprojects\Harsh flutter\foodapp\build\path_provider_android\generated\res\rs\release
+io.flutter.plugins.pathprovider.path_provider_android-mergeReleaseResources-9 D:\flutterprojects\Harsh flutter\foodapp\build\path_provider_android\intermediates\incremental\release\mergeReleaseResources\merged.dir
+io.flutter.plugins.pathprovider.path_provider_android-mergeReleaseResources-10 D:\flutterprojects\Harsh flutter\foodapp\build\path_provider_android\intermediates\incremental\release\mergeReleaseResources\stripped.dir
+io.flutter.plugins.pathprovider.path_provider_android-merged_res-11 D:\flutterprojects\Harsh flutter\foodapp\build\path_provider_android\intermediates\merged_res\release
