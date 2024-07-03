@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="gcm_defaultSenderId" translatable="false">870331328943</string>
-    <string name="google_api_key" translatable="false">AIzaSyD974qwBHv2-s5C9eQXoaTuRwGGjTejjko</string>
-    <string name="google_app_id" translatable="false">1:870331328943:android:6b809fa6578418208ae75a</string>
-    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyD974qwBHv2-s5C9eQXoaTuRwGGjTejjko</string>
-    <string name="google_storage_bucket" translatable="false">boreal-conquest-425406-e0.appspot.com</string>
-    <string name="project_id" translatable="false">boreal-conquest-425406-e0</string>
-</resources>
