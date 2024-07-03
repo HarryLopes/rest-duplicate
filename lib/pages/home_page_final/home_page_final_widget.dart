@@ -575,13 +575,60 @@ class _HomePageFinalWidgetState extends State<HomePageFinalWidget>
                                                                               mainAxisSize: MainAxisSize.max,
                                                                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                               children: [
-                                                                                Text(
-                                                                                  '${cartitemItem.quantity.toString()}x ${rowMenuRecord.name} (${cartitemItem.menuSize.sizeName})',
-                                                                                  style: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                        fontFamily: 'Readex Pro',
-                                                                                        fontSize: 17.0,
-                                                                                        letterSpacing: 0.0,
+                                                                                Row(
+                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                  children: [
+                                                                                    if (rowMenuRecord.isNonveg == true)
+                                                                                      Padding(
+                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                                                                                        child: Container(
+                                                                                          width: 16.0,
+                                                                                          height: 16.0,
+                                                                                          decoration: BoxDecoration(
+                                                                                            color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                            borderRadius: BorderRadius.circular(4.0),
+                                                                                            border: Border.all(
+                                                                                              color: const Color(0xFFD30000),
+                                                                                              width: 1.5,
+                                                                                            ),
+                                                                                          ),
+                                                                                          child: const Icon(
+                                                                                            Icons.circle_rounded,
+                                                                                            color: Color(0xFFD30000),
+                                                                                            size: 9.0,
+                                                                                          ),
+                                                                                        ),
                                                                                       ),
+                                                                                    if (rowMenuRecord.isVeg == true)
+                                                                                      Padding(
+                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                                                                                        child: Container(
+                                                                                          width: 16.0,
+                                                                                          height: 16.0,
+                                                                                          decoration: BoxDecoration(
+                                                                                            color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                            borderRadius: BorderRadius.circular(4.0),
+                                                                                            border: Border.all(
+                                                                                              color: const Color(0xF100BD22),
+                                                                                              width: 1.5,
+                                                                                            ),
+                                                                                          ),
+                                                                                          child: const Icon(
+                                                                                            Icons.circle_rounded,
+                                                                                            color: Color(0xF100BD22),
+                                                                                            size: 9.0,
+                                                                                          ),
+                                                                                        ),
+                                                                                      ),
+                                                                                    Text(
+                                                                                      '${cartitemItem.quantity.toString()}x ${rowMenuRecord.name} (${cartitemItem.menuSize.sizeName})',
+                                                                                      style: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                            fontFamily: 'Readex Pro',
+                                                                                            fontSize: 17.0,
+                                                                                            letterSpacing: 0.0,
+                                                                                          ),
+                                                                                    ),
+                                                                                  ],
                                                                                 ),
                                                                                 Text(
                                                                                   formatNumber(
@@ -628,7 +675,7 @@ class _HomePageFinalWidgetState extends State<HomePageFinalWidget>
                                                               child: Text(
                                                                 'Total Bill : ${formatNumber(
                                                                   listViewOrdersRecord
-                                                                      .cartSum,
+                                                                      .offerAppliedCartSum,
                                                                   formatType:
                                                                       FormatType
                                                                           .custom,
@@ -1243,13 +1290,60 @@ class _HomePageFinalWidgetState extends State<HomePageFinalWidget>
                                                                             mainAxisAlignment:
                                                                                 MainAxisAlignment.spaceBetween,
                                                                             children: [
-                                                                              Text(
-                                                                                '${cartItem.quantity.toString()}x ${rowMenuRecord.name} (${cartItem.menuSize.sizeName})',
-                                                                                style: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                      fontFamily: 'Readex Pro',
-                                                                                      fontSize: 17.0,
-                                                                                      letterSpacing: 0.0,
+                                                                              Row(
+                                                                                mainAxisSize: MainAxisSize.max,
+                                                                                children: [
+                                                                                  if (rowMenuRecord.isVeg == true)
+                                                                                    Padding(
+                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                                                                                      child: Container(
+                                                                                        width: 16.0,
+                                                                                        height: 16.0,
+                                                                                        decoration: BoxDecoration(
+                                                                                          color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                          borderRadius: BorderRadius.circular(4.0),
+                                                                                          border: Border.all(
+                                                                                            color: const Color(0xF100BD22),
+                                                                                            width: 1.5,
+                                                                                          ),
+                                                                                        ),
+                                                                                        child: const Icon(
+                                                                                          Icons.circle_rounded,
+                                                                                          color: Color(0xF100BD22),
+                                                                                          size: 9.0,
+                                                                                        ),
+                                                                                      ),
                                                                                     ),
+                                                                                  if (rowMenuRecord.isNonveg == true)
+                                                                                    Padding(
+                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                                                                                      child: Container(
+                                                                                        width: 16.0,
+                                                                                        height: 16.0,
+                                                                                        decoration: BoxDecoration(
+                                                                                          color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                          borderRadius: BorderRadius.circular(4.0),
+                                                                                          border: Border.all(
+                                                                                            color: const Color(0xFFD30000),
+                                                                                            width: 1.5,
+                                                                                          ),
+                                                                                        ),
+                                                                                        child: const Icon(
+                                                                                          Icons.circle_rounded,
+                                                                                          color: Color(0xFFD30000),
+                                                                                          size: 9.0,
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+                                                                                  Text(
+                                                                                    '${cartItem.quantity.toString()}x ${rowMenuRecord.name} (${cartItem.menuSize.sizeName})',
+                                                                                    style: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                          fontFamily: 'Readex Pro',
+                                                                                          fontSize: 17.0,
+                                                                                          letterSpacing: 0.0,
+                                                                                        ),
+                                                                                  ),
+                                                                                ],
                                                                               ),
                                                                               Text(
                                                                                 formatNumber(
@@ -1294,7 +1388,16 @@ class _HomePageFinalWidgetState extends State<HomePageFinalWidget>
                                                                         0.0,
                                                                         0.0),
                                                             child: Text(
-                                                              'Total Bill : ${listViewOrdersRecord.cartSum.toString()}',
+                                                              'Total Bill : ${formatNumber(
+                                                                listViewOrdersRecord
+                                                                    .offerAppliedCartSum,
+                                                                formatType:
+                                                                    FormatType
+                                                                        .custom,
+                                                                currency: '₹',
+                                                                format: '',
+                                                                locale: '',
+                                                              )}',
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .bodyMedium
@@ -1698,13 +1801,60 @@ class _HomePageFinalWidgetState extends State<HomePageFinalWidget>
                                                                               mainAxisSize: MainAxisSize.max,
                                                                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                               children: [
-                                                                                Text(
-                                                                                  '${itemItem.quantity.toString()}x ${rowMenuRecord.name} (${itemItem.menuSize.sizeName})',
-                                                                                  style: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                        fontFamily: 'Readex Pro',
-                                                                                        fontSize: 17.0,
-                                                                                        letterSpacing: 0.0,
+                                                                                Row(
+                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                  children: [
+                                                                                    if (rowMenuRecord.isNonveg == true)
+                                                                                      Padding(
+                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                                                                                        child: Container(
+                                                                                          width: 16.0,
+                                                                                          height: 16.0,
+                                                                                          decoration: BoxDecoration(
+                                                                                            color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                            borderRadius: BorderRadius.circular(4.0),
+                                                                                            border: Border.all(
+                                                                                              color: const Color(0xFFD30000),
+                                                                                              width: 1.5,
+                                                                                            ),
+                                                                                          ),
+                                                                                          child: const Icon(
+                                                                                            Icons.circle_rounded,
+                                                                                            color: Color(0xFFD30000),
+                                                                                            size: 9.0,
+                                                                                          ),
+                                                                                        ),
                                                                                       ),
+                                                                                    if (rowMenuRecord.isVeg == true)
+                                                                                      Padding(
+                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                                                                                        child: Container(
+                                                                                          width: 16.0,
+                                                                                          height: 16.0,
+                                                                                          decoration: BoxDecoration(
+                                                                                            color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                            borderRadius: BorderRadius.circular(4.0),
+                                                                                            border: Border.all(
+                                                                                              color: const Color(0xF100BD22),
+                                                                                              width: 1.5,
+                                                                                            ),
+                                                                                          ),
+                                                                                          child: const Icon(
+                                                                                            Icons.circle_rounded,
+                                                                                            color: Color(0xF100BD22),
+                                                                                            size: 9.0,
+                                                                                          ),
+                                                                                        ),
+                                                                                      ),
+                                                                                    Text(
+                                                                                      '${itemItem.quantity.toString()}x ${rowMenuRecord.name} (${itemItem.menuSize.sizeName})',
+                                                                                      style: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                            fontFamily: 'Readex Pro',
+                                                                                            fontSize: 17.0,
+                                                                                            letterSpacing: 0.0,
+                                                                                          ),
+                                                                                    ),
+                                                                                  ],
                                                                                 ),
                                                                                 Text(
                                                                                   formatNumber(
@@ -1749,7 +1899,16 @@ class _HomePageFinalWidgetState extends State<HomePageFinalWidget>
                                                                           0.0,
                                                                           0.0),
                                                               child: Text(
-                                                                'Total Bill : ${listViewOrdersRecord.cartSum.toString()}',
+                                                                'Total Bill : ${formatNumber(
+                                                                  listViewOrdersRecord
+                                                                      .offerAppliedCartSum,
+                                                                  formatType:
+                                                                      FormatType
+                                                                          .custom,
+                                                                  currency: '₹',
+                                                                  format: '',
+                                                                  locale: '',
+                                                                )}',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
