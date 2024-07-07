@@ -60,6 +60,11 @@ class OrdersRecord extends FirestoreRecord {
   int get orderMakingTime => _orderMakingTime ?? 0;
   bool hasOrderMakingTime() => _orderMakingTime != null;
 
+  // "offerAppliedCartSum" field.
+  double? _offerAppliedCartSum;
+  double get offerAppliedCartSum => _offerAppliedCartSum ?? 0.0;
+  bool hasOfferAppliedCartSum() => _offerAppliedCartSum != null;
+
   void _initializeFields() {
     _userRef = snapshotData['userRef'] as DocumentReference?;
     _orderTime = snapshotData['orderTime'] as DateTime?;
@@ -73,6 +78,8 @@ class OrdersRecord extends FirestoreRecord {
     );
     _cartSum = castToType<double>(snapshotData['cartSum']);
     _orderMakingTime = castToType<int>(snapshotData['orderMakingTime']);
+    _offerAppliedCartSum =
+        castToType<double>(snapshotData['offerAppliedCartSum']);
   }
 
   static CollectionReference get collection =>
@@ -117,6 +124,7 @@ Map<String, dynamic> createOrdersRecordData({
   DocumentReference? restaurantRef,
   double? cartSum,
   int? orderMakingTime,
+  double? offerAppliedCartSum,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -128,6 +136,7 @@ Map<String, dynamic> createOrdersRecordData({
       'restaurantRef': restaurantRef,
       'cartSum': cartSum,
       'orderMakingTime': orderMakingTime,
+      'offerAppliedCartSum': offerAppliedCartSum,
     }.withoutNulls,
   );
 
@@ -148,7 +157,8 @@ class OrdersRecordDocumentEquality implements Equality<OrdersRecord> {
         e1?.restaurantRef == e2?.restaurantRef &&
         listEquality.equals(e1?.item, e2?.item) &&
         e1?.cartSum == e2?.cartSum &&
-        e1?.orderMakingTime == e2?.orderMakingTime;
+        e1?.orderMakingTime == e2?.orderMakingTime &&
+        e1?.offerAppliedCartSum == e2?.offerAppliedCartSum;
   }
 
   @override
@@ -161,7 +171,8 @@ class OrdersRecordDocumentEquality implements Equality<OrdersRecord> {
         e?.restaurantRef,
         e?.item,
         e?.cartSum,
-        e?.orderMakingTime
+        e?.orderMakingTime,
+        e?.offerAppliedCartSum
       ]);
 
   @override

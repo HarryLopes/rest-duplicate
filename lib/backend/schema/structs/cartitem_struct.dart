@@ -33,7 +33,7 @@ class CartitemStruct extends FFFirebaseStruct {
   set menuSize(SizeStruct? val) => _menuSize = val;
 
   void updateMenuSize(Function(SizeStruct) updateFn) {
-    updateFn(menuSize ??= SizeStruct());
+    updateFn(_menuSize ??= SizeStruct());
   }
 
   bool hasMenuSize() => _menuSize != null;
